@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
 import 'package:my_to_dos_application/models/reminder.dart';
+import 'package:my_to_dos_application/ui/home_page.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -88,16 +89,12 @@ class NotifyHelper {
     tz.setLocalLocation(tz.getLocation(timeZone));
   }
 
-  void requestIOSPermissions() {
-    // Not applicable for Android
-  }
-
   Future selectNotification(String? payload) async {
     if (payload != null) {
       print('notification payload: $payload');
     } else {
       print("Notification Done");
     }
-    Get.to(() => Container(color: Colors.white));
+    Get.to(HomePage());
   }
 }

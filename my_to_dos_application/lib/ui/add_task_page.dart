@@ -101,7 +101,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   }
 
   _addReminderToDB() async {
-    int value = await _reminderController.addReminder(
+    await _reminderController.addReminder(
         reminder: Reminder(
             task: _taskController.text.toString(),
             note: _noteController.text.toString(),
@@ -110,7 +110,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
             color: _selectedColor,
             isPinned: _isPinned,
             isCompleted: 0));
-    print("My id is " + "$value");
   }
 
   _colorPallete() {

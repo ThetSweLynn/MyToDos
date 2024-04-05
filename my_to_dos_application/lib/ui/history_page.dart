@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:my_to_dos_application/controllers/reminder_controller.dart';
 import 'package:my_to_dos_application/database/db_helper.dart';
 import 'package:my_to_dos_application/models/reminder.dart';

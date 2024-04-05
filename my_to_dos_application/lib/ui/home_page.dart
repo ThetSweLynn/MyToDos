@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:my_to_dos_application/controllers/reminder_controller.dart';
+import 'package:my_to_dos_application/database/db_helper.dart';
 import 'package:my_to_dos_application/models/reminder.dart';
 import 'package:my_to_dos_application/services/notification_services.dart';
 import 'package:my_to_dos_application/services/theme_services.dart';
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    DBHelper.initDb();
     _reminderController.onReady();
     notifyHelper = NotifyHelper();
     notifyHelper.initializeNotification();

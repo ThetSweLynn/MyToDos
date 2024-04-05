@@ -8,10 +8,10 @@ class ReminderController extends GetxController {
     super.onReady();
   }
 
-  var reminderList = <Reminder>[].obs;
+  final RxList<Reminder> reminderList = List<Reminder>.empty().obs;
 
-  Future<int> addReminder({Reminder? reminder}) async {
-    return await DBHelper.insert(reminder);
+  Future<void> addReminder({required Reminder reminder}) async {
+    await DBHelper.insert(reminder);
   }
 
   void getReminders() async {
