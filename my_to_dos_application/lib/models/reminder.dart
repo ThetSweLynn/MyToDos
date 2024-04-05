@@ -20,8 +20,8 @@ class Reminder {
 
   Reminder.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    task = json['task'];
-    note = json['note'];
+    task = json['task'].toString();
+    note = json['note'].toString();
     isCompleted = json['isCompleted'];
     date = json['date'];
     time = json['time'];

@@ -57,4 +57,13 @@ class DBHelper {
     SET isCompleted = 1
     WHERE id = $id''');
   }
+
+  static Future<List<Map<String, dynamic>>> getCompletedTasks() async {
+    print("getCompletedTasks function called");
+    return await _db!.query(
+      _tableName,
+      where: 'isCompleted = ?',
+      whereArgs: [1],
+    );
+  }
 }

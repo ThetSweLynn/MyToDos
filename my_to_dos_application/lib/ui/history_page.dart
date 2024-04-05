@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:my_to_dos_application/controllers/reminder_controller.dart';
+import 'package:my_to_dos_application/database/db_helper.dart';
 import 'package:my_to_dos_application/models/reminder.dart';
 import 'package:my_to_dos_application/ui/widgets/reminder_tile.dart';
 
@@ -34,24 +34,37 @@ class _MyHistoryPageState extends State<MyHistoryPage> {
 
   _showReminders() {
     return Expanded(
-      child: Obx(() {
-        return ListView.builder(
-            itemCount: _reminderController.reminderList.length,
-            itemBuilder: (_, index) {
-              Reminder reminder = _reminderController.reminderList[index];
-              print(reminder.toJson());
-
-              return AnimationConfiguration.staggeredList(
+      child: FutureBuilder(
+        future: DBHelper.getCompletedTasks(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final completedTasks = snapshot.data as List<Map<String, dynamic>>;
+            return ListView.builder(
+              itemCount: completedTasks.length,
+              itemBuilder: (_, index) {
+                final reminder = Reminder.fromJson(completedTasks[index]);
+                return AnimationConfiguration.staggeredList(
                   position: index,
                   child: SlideAnimation(
-                      child: FadeInAnimation(
-                          child: Row(
-                    children: [
-                      ReminderTile(_reminderController.reminderList[index]),
-                    ],
-                  ))));
-            });
-      }),
+                    child: FadeInAnimation(
+                      child: Row(
+                        children: [
+                          ReminderTile(reminder),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+                child: Text(
+                    "Error fetching completed tasks")); //if-elseifgemini's source
+          } //ifno, (no-history-->error)
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }

@@ -10,6 +10,7 @@ import 'package:my_to_dos_application/models/reminder.dart';
 import 'package:my_to_dos_application/ui/theme.dart';
 import 'package:my_to_dos_application/ui/widgets/button.dart';
 import 'package:my_to_dos_application/ui/widgets/input_field.dart';
+import 'package:my_to_dos_application/ui/widgets/larger_text_field.dart';
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({super.key});
@@ -47,10 +48,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 height: 58,
                 controller: _taskController,
               ),
-              //this one needs fixing in hint part
-              MyInputField(
+              LargerInputField(
                 hint: "Note",
-                height: 152,
                 controller: _noteController,
               ),
               Row(
@@ -104,8 +103,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
   _addReminderToDB() async {
     int value = await _reminderController.addReminder(
         reminder: Reminder(
-            task: _taskController.text,
-            note: _noteController.text,
+            task: _taskController.text.toString(),
+            note: _noteController.text.toString(),
             date: DateFormat.yMd().format(_selectedDate),
             time: _selectedTime.format(context),
             color: _selectedColor,
