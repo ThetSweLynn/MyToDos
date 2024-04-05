@@ -24,8 +24,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   final TextEditingController _taskController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
-  TimeOfDay _selectedTime =
-      TimeOfDay.fromDateTime(DateTime.now().add(Duration(hours: 1)));
+  TimeOfDay _selectedTime = TimeOfDay.fromDateTime(DateTime.now());
   int _isPinned = 0;
   int _selectedColor = 0;
 
