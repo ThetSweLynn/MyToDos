@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
     _reminderController.onReady();
     notifyHelper = NotifyHelper();
     notifyHelper.initializeNotification();
-    notifyHelper.requestIOSPermissions();
   }
 
   @override
