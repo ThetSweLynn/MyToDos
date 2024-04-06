@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
           _addTaskBar(context),
           SizedBox(height: 30),
           _showReminders(),
+          SizedBox(height: 70),
         ],
       ),
     );
