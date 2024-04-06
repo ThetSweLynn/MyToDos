@@ -205,7 +205,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _appBar() {
+  /*_appBar() {
     return AppBar(
       elevation: 0,
       leading: GestureDetector(
@@ -220,10 +220,22 @@ class _HomePageState extends State<HomePage> {
           notifyHelper.scheduledNotification();*/
         },
         child: Icon(
-          Icons.dark_mode,
+          Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
           size: 20,
         ),
       ),
     );
-  }
+  } */
+
+  _appBar() {
+    return AppBar(
+        backgroundColor: context.theme.backgroundColor,
+        leading: GestureDetector(
+            onTap: () {
+              ThemeService().switchTheme();
+            },
+            child: Icon(
+              Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.dark_mode_rounded,
+            )));
+  } //modified
 }
