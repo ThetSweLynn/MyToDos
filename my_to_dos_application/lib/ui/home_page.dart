@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
           _addTaskBar(context),
           SizedBox(height: 30),
           _showReminders(),
+          SizedBox(height: 100),
         ],
       ),
     );
@@ -152,7 +153,6 @@ class _HomePageState extends State<HomePage> {
             itemCount: _reminderController.reminderList.length,
             itemBuilder: (_, index) {
               Reminder reminder = _reminderController.reminderList[index];
-              print(reminder.toJson());
 
               return AnimationConfiguration.staggeredList(
                   position: index,

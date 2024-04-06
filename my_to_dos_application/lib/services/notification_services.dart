@@ -23,7 +23,6 @@ class NotifyHelper {
   }
 
   displayNotification({required String title, required String body}) async {
-    
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'your channel id',
       'your channel name',
@@ -43,8 +42,9 @@ class NotifyHelper {
   }
 
   // Schedule notification
-  scheduledNotification(int hour, int minutes, Reminder reminder) async {
-    tz.TZDateTime scheduledDate = _convertTime(hour, minutes);
+  scheduledNotification(
+      int month, int day, int hour, int minutes, Reminder reminder) async {
+    tz.TZDateTime scheduledDate = _convertTime(month, day, hour, minutes);
     await flutterLocalNotificationsPlugin.zonedSchedule(
       reminder.id!.toInt(),
       reminder.task,
@@ -59,18 +59,18 @@ class NotifyHelper {
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
+      matchDateTimeComponents: DateTimeComponents.dateAndTime,
       payload: "{$reminder.task}|{$reminder.note}",
     );
   }
 
-  tz.TZDateTime _convertTime(int hour, int minutes) {
+  tz.TZDateTime _convertTime(int month, int day, int hour, int minutes) {
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
     tz.TZDateTime scheduledDate = tz.TZDateTime(
       tz.local,
       now.year,
-      now.month,
-      now.day,
+      month,
+      day,
       hour,
       minutes,
     );
