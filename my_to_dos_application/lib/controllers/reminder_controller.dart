@@ -9,6 +9,7 @@ class ReminderController extends GetxController {
   }
 
   final RxList<Reminder> reminderList = List<Reminder>.empty().obs;
+  final RxList<Reminder> reminderCompletedList = List<Reminder>.empty().obs;
 
   Future<void> addReminder({required Reminder reminder}) async {
     await DBHelper.insert(reminder);
@@ -25,8 +26,19 @@ class ReminderController extends GetxController {
     getReminders();
   }
 
+  void deleteCompletedReminder(Reminder reminder) {
+    DBHelper.delete(reminder);
+    getCompletedReminders();
+  }
+
   void markAsCompleted(int id) async {
     await DBHelper.update(id);
     getReminders();
+  }
+
+  void getCompletedReminders() async {
+    List<Map<String, dynamic>> reminders = await DBHelper.getCompletedTasks();
+    reminderCompletedList.assignAll(
+        reminders.map((data) => new Reminder.fromJson(data)).toList());
   }
 }

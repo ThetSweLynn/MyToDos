@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         onPressed: () {
           Get.to(() => MyHistoryPage());
+          _reminderController.getCompletedReminders();
         },
       ),
       appBar: _appBar(),

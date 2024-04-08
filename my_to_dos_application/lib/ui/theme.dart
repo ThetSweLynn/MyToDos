@@ -14,6 +14,7 @@ const Color lightGreyClr = Color(0xFF282828);
 const Color inputFieldClr = Color(0xFFf3f3f3);
 const Color inputTextClr = Color(0xFF14181B);
 const Color inputHintClr = Color(0x80000000);
+const Color greyClr = Color(0xFFF3F3F3);
 
 class Themes {
   static final light = ThemeData(
