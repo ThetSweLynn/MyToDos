@@ -3,7 +3,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_to_dos_application/controllers/reminder_controller.dart';
-import 'package:my_to_dos_application/database/db_helper.dart';
 import 'package:my_to_dos_application/models/reminder.dart';
 import 'package:my_to_dos_application/ui/home_page.dart';
 import 'package:my_to_dos_application/ui/theme.dart';
@@ -17,10 +16,6 @@ class MyHistoryPage extends StatefulWidget {
 }
 
 class _MyHistoryPageState extends State<MyHistoryPage> {
-  final List color = [0, 1, 2, 3, 4];
-
-  List SelectedCategories = [];
-
   final _reminderController = Get.put(ReminderController());
   @override
   Widget build(BuildContext context) {
@@ -95,7 +90,7 @@ class _MyHistoryPageState extends State<MyHistoryPage> {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
-        height: MediaQuery.of(context).size.height * 0.20,
+        height: MediaQuery.of(context).size.height * 0.18,
         child: Column(
           children: [
             Spacer(),

@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   get_storage:
   get:
-  flutter_local_notifications:
   flutter_timezone: ^1.0.8
   provider: ^6.1.2
   font_awesome_flutter: ^10.7.0
