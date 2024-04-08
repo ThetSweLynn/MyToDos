@@ -200,11 +200,29 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   void _handleDatePick() async {
     DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2024, 12, 31),
-    );
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2024, 12, 31),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData(
+              datePickerTheme: DatePickerThemeData(
+                confirmButtonStyle: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Colors.black), // Coral color for button
+                ),
+                cancelButtonStyle: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Colors.black), // Coral color for button
+                ),
+                headerBackgroundColor: primaryClr,
+                headerForegroundColor: Colors.white,
+              ),
+            ).copyWith(colorScheme: ColorScheme.light(primary: primaryClr)),
+            child: child!,
+          );
+        });
     if (pickedDate != null) {
       setState(() {
         _selectedDate = pickedDate;
@@ -255,6 +273,47 @@ class _AddTaskPageState extends State<AddTaskPage> {
     TimeOfDay? pickedTime = await showTimePicker(
       initialTime: TimeOfDay.now(),
       context: context,
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData(
+            timePickerTheme: TimePickerThemeData(
+              helpTextStyle: TextStyle(
+                color: Colors.black, // Black for readability
+              ),
+              confirmButtonStyle: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    Colors.black), // Coral color for button
+              ),
+              cancelButtonStyle: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    Colors.black), // Coral color for button
+              ),
+              dayPeriodBorderSide: BorderSide.none,
+              dialBackgroundColor: Color(0xffFFEFEF), // Light gray background
+              dialHandColor: Color(0xffFF6464), // Coral color for hands
+              hourMinuteTextColor: MaterialStateColor.resolveWith((states) =>
+                  states.contains(MaterialState.selected)
+                      ? Colors.white
+                      : Colors.black), // Black for readability
+              dayPeriodTextColor: MaterialStateColor.resolveWith((states) =>
+                  states.contains(MaterialState.selected)
+                      ? Colors.white
+                      : Colors.black),
+              dayPeriodColor: MaterialStateColor.resolveWith((states) =>
+                  states.contains(MaterialState.selected)
+                      ? primaryClr
+                      : Color(0xffFFEFEF)), // Black for readability
+              entryModeIconColor: Colors.black, // Black for readability
+              backgroundColor: Colors.white, // White background for dialog
+              hourMinuteColor: MaterialStateColor.resolveWith((states) =>
+                  states.contains(MaterialState.selected)
+                      ? primaryClr
+                      : Color(0xffFFEFEF)), // Lighter coral for highlight
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (pickedTime != null) {
       setState(() {
