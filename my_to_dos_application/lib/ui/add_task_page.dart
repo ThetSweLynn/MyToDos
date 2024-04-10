@@ -209,12 +209,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
             data: ThemeData(
               datePickerTheme: DatePickerThemeData(
                 confirmButtonStyle: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(
-                      Colors.black), // Coral color for button
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
                 ),
                 cancelButtonStyle: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(
-                      Colors.black), // Coral color for button
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
                 ),
                 headerBackgroundColor: primaryClr,
                 headerForegroundColor: Colors.white,
@@ -226,8 +226,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     if (pickedDate != null) {
       setState(() {
         _selectedDate = pickedDate;
-        dateIconColor =
-            primaryClr; // Change color to green on selection (example)
+        dateIconColor = primaryClr;
       });
     }
   }
