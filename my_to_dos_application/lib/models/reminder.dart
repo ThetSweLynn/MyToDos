@@ -30,15 +30,15 @@ class Reminder {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['task'] = this.task;
-    data['note'] = this.note;
-    data['isCompleted'] = this.isCompleted;
-    data['date'] = this.date;
-    data['time'] = this.time;
-    data['color'] = this.color;
-    data['isPinned'] = this.isPinned;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['task'] = task;
+    data['note'] = note;
+    data['isCompleted'] = isCompleted;
+    data['date'] = date;
+    data['time'] = time;
+    data['color'] = color;
+    data['isPinned'] = isPinned;
     return data;
   }
 }

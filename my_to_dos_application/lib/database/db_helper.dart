@@ -3,17 +3,17 @@ import 'package:sqflite/sqflite.dart';
 
 class DBHelper {
   static Database? _db;
-  static final int _version = 1;
-  static final String _tableName = 'reminders';
+  static const int _version = 1;
+  static const String _tableName = 'reminders';
 
   static Future<void> initDb() async {
     if (_db != null) {
       return;
     }
     try {
-      String _path = await getDatabasesPath() + 'reminders.db';
+      String path = '${await getDatabasesPath()}reminders.db';
       _db =
-          await openDatabase(_path, version: _version, onCreate: (db, version) {
+          await openDatabase(path, version: _version, onCreate: (db, version) {
         print("creating a new one");
         db.execute(
           "CREATE TABLE $_tableName("

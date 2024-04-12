@@ -9,12 +9,12 @@ class LargerInputField extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? widget;
   const LargerInputField({
-    Key? key,
+    super.key,
     //required this.task,
     required this.hint,
     this.controller,
     this.widget,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +48,11 @@ class LargerInputField extends StatelessWidget {
                               hintStyle: inputHintStyle,
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                      color: context.theme.backgroundColor,
+                                      color: context.theme.colorScheme.background,
                                       width: 0)),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: context.theme.backgroundColor,
+                                  color: context.theme.colorScheme.background,
                                   width: 0,
                                 ),
                               ),

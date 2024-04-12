@@ -3,10 +3,6 @@ import 'package:my_to_dos_application/database/db_helper.dart';
 import 'package:my_to_dos_application/models/reminder.dart';
 
 class ReminderController extends GetxController {
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   final RxList<Reminder> reminderList = List<Reminder>.empty().obs;
   final RxList<Reminder> reminderCompletedList = List<Reminder>.empty().obs;
@@ -18,7 +14,7 @@ class ReminderController extends GetxController {
   void getReminders() async {
     List<Map<String, dynamic>> reminders = await DBHelper.query();
     reminderList.assignAll(
-        reminders.map((data) => new Reminder.fromJson(data)).toList());
+        reminders.map((data) => Reminder.fromJson(data)).toList());
   }
 
   void deleteReminder(Reminder reminder) {
@@ -39,6 +35,6 @@ class ReminderController extends GetxController {
   void getCompletedReminders() async {
     List<Map<String, dynamic>> reminders = await DBHelper.getCompletedTasks();
     reminderCompletedList.assignAll(
-        reminders.map((data) => new Reminder.fromJson(data)).toList());
+        reminders.map((data) => Reminder.fromJson(data)).toList());
   }
 }

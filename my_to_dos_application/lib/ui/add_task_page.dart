@@ -1,8 +1,5 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:my_to_dos_application/controllers/reminder_controller.dart';
@@ -177,7 +174,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               width: 52,
               height: 156,
               child: Column(
@@ -247,7 +244,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               width: 52,
               height: 156,
               child: Column(
@@ -339,7 +336,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               width: 52,
               height: 156,
               child: Column(

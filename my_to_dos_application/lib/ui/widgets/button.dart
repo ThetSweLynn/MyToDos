@@ -6,8 +6,7 @@ class MyButton extends StatelessWidget {
   final String label;
   final Function()? onTap;
   const MyButton(
-      {Key? key, this.icon, required this.label, required this.onTap})
-      : super(key: key);
+      {super.key, this.icon, required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class MyButton extends StatelessWidget {
         child: Row(
           children: [
             Icon(
-              icon as IconData?,
+              icon,
               color: Colors.white,
             ),
             Text(

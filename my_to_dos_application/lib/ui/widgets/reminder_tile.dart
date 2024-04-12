@@ -5,7 +5,7 @@ import 'package:my_to_dos_application/ui/theme.dart';
 
 class ReminderTile extends StatelessWidget {
   final Reminder? reminder;
-  ReminderTile(this.reminder);
+  const ReminderTile(this.reminder, {super.key});
 
   @override
   Widget build(BuildContext context) {
