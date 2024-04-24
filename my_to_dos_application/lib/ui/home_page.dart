@@ -22,12 +22,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _reminderController = Get.put(ReminderController());
-  
+
   @override
   void initState() {
     super.initState();
     DBHelper.initDb();
-    _reminderController.onReady();
+    _reminderController.getReminders();
   }
 
   @override
